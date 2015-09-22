@@ -7,7 +7,8 @@ The contents of this repository are the requierd files for creating a the Tidy d
 
 UCI HAR Dataset.zip: Raw Data
 
+combined UCI HAR Dataset.zip: Combined dataset with headers, and Subject/Activity columns
+
 getdata_prg1_tidy.csv : Tidy Dataset
 
-GetData_Project1.R : R script used to convert Raw Date into Tidy Dataset
-
+GetData_Project1_Part1.R : R script used to convert Raw Date into combined Dataset
