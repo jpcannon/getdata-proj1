@@ -1,5 +1,5 @@
 ######################################################################
-##  Prog:   GetData_Project1_Part1.R
+##  Prog:  run_analysis.R
 ##  Author: Joe Cannon
 ##  Date:   09/21/2015
 ##  Description: This is an R program for taking measurments from training and test
