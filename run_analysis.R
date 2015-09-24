@@ -83,6 +83,6 @@ select_data <- select(mean_data,1,Activity,4:ncol(mean_data)-1)
 final <- select_data %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
 
 # Write out file
-write.csv(final,file="combined UCI HAR Dataset.csv",row.names = FALSE)
+write.table(final,file="combined UCI HAR Dataset.txt",row.names = FALSE)
 
 ########  All done :-)  #########
