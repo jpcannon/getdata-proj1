@@ -77,7 +77,10 @@ for(i in 1:nrow(mean_data)) {
 }
 
 # Loose Activity_code and move Activity to 2nd column
-final <- select(mean_data,1,Activity,4:ncol(mean_data)-1)
+select_data <- select(mean_data,1,Activity,4:ncol(mean_data)-1)
+
+# Average all the data for a given Subject and Activity
+final <- select_data %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
 
 # Write out file
 write.csv(final,file="combined UCI HAR Dataset.csv",row.names = FALSE)
