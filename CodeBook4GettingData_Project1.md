@@ -65,7 +65,7 @@ angle.tBodyGyroJerkMean.gravityMean
 angle.X.gravityMean
 angle.Y.gravityMean                
 angle.Z.gravityMean                 
-# End of Angled Veriables
+## End of Angled Veriables
 
 tBodyAcc.std.X                      
 tBodyAcc.std.Y                     
