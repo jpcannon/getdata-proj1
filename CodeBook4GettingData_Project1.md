@@ -55,20 +55,17 @@ fBodyBodyGyroMag.mean
 fBodyBodyGyroMag.meanFreq           
 fBodyBodyGyroJerkMag.mean           
 fBodyBodyGyroJerkMag.meanFreq     
+## Angle Variables are generalized 
+#Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
 
 angle.tBodyAccMean.gravity   
-
 angle.tBodyAccJerkMean.gravityMean  
-
 angle.tBodyGyroMean.gravityMean    
-
 angle.tBodyGyroJerkMean.gravityMean 
-
 angle.X.gravityMean
-
 angle.Y.gravityMean                
-
 angle.Z.gravityMean                 
+# End of Angled Veriables
 
 tBodyAcc.std.X                      
 tBodyAcc.std.Y                     
