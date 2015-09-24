@@ -1,9 +1,9 @@
-##Code Book for Getting Data Project 1
+#Code Book for Getting Data Project 1
 Columns in code:
 
 Subject:            The numeric representation of the subject being measured                            
 Activity:           The activity occuring during measurment
-#Measurment names include measurment type:
+##Measurment names include measurment type:
 mean,std,meanFreq,gravityMean,gravity (NOTE: gravity in and of itself is neither a std or mean measurement, however in our
 case it is attached to a tBodyAccMean measurement so I included it.
 Measurment names may also include a directional component( X, Y, Z ). Usually it is at the end of the variable name, with the exception of the angle variable where it is between the measurment description and the measurment type.
