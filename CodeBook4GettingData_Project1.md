@@ -48,6 +48,10 @@ tBodyGyroMean
 tBodyGyroJerkMean
 
 
+The initial dataset was processed using 'run_analysis.r'. The output from the R process is 'combined UCI HAR Dataset.txt'
+
+## Definition of 'combined UCI HAR Dataset.txt'
+
 ##Columns in code:
 
 Subject:            The numeric representation of the subject being measured                            
@@ -55,99 +59,113 @@ Activity:           The activity occuring during measurment
 ##Measurment names include measurment type:
 mean,std,meanFreq,gravityMean,gravity (NOTE: gravity in and of itself is neither a std or mean measurement, however in our
 case it is attached to a tBodyAccMean measurement so I included it.
-Measurment names may also include a directional component( X, Y, Z ). Usually it is at the end of the variable name, with the exception of the angle variable where it is between the measurment description and the measurment type.
+
+Measurment names may also include a directional component( X, Y, Z ). 
+Usually it is at the end of the variable name, with the exception of the angle variable where it is between the measurment description and the measurment type.
 All variables have been summated as an average of the Subject and Activity.
 
-tBodyAcc.mean.X                    
-tBodyAcc.mean.Y                     
-tBodyAcc.mean.Z                     
-tGravityAcc.mean.X                 
-tGravityAcc.mean.Y                  
-tGravityAcc.mean.Z                  
-tBodyAccJerk.mean.X                
-tBodyAccJerk.mean.Y                 
-tBodyAccJerk.mean.Z                 
-tBodyGyro.mean.X                   
-tBodyGyro.mean.Y                    
-tBodyGyro.mean.Z                    
-tBodyGyroJerk.mean.X               
-tBodyGyroJerk.mean.Y                
-tBodyGyroJerk.mean.Z                
-tBodyAccMag.mean                   
-tGravityAccMag.mean                 
-tBodyAccJerkMag.mean                
-tBodyGyroMag.mean                  
-tBodyGyroJerkMag.mean               
-fBodyAcc.mean.X                     
-fBodyAcc.mean.Y                    
-fBodyAcc.mean.Z                     
-fBodyAcc.meanFreq.X                 
-fBodyAcc.meanFreq.Y                
-fBodyAcc.meanFreq.Z                 
-fBodyAccJerk.mean.X                 
-fBodyAccJerk.mean.Y                
-fBodyAccJerk.mean.Z                 
-fBodyAccJerk.meanFreq.X             
-fBodyAccJerk.meanFreq.Y            
-fBodyAccJerk.meanFreq.Z             
-fBodyGyro.mean.X                    
-fBodyGyro.mean.Y                   
-fBodyGyro.mean.Z                    
-fBodyGyro.meanFreq.X                
-fBodyGyro.meanFreq.Y               
-fBodyGyro.meanFreq.Z                
-fBodyAccMag.mean                    
-fBodyAccMag.meanFreq               
-fBodyBodyAccJerkMag.mean            
-fBodyBodyAccJerkMag.meanFreq        
-fBodyBodyGyroMag.mean              
-fBodyBodyGyroMag.meanFreq           
-fBodyBodyGyroJerkMag.mean           
-fBodyBodyGyroJerkMag.meanFreq     
+Name						    | Description
+--------------------------------|--------------------
+tBodyAcc.mean.X					| Body Acceleration Mean of X direction                
+tBodyAcc.mean.Y                 | Body Acceleration Mean of Y direction                    
+tBodyAcc.mean.Z                 | Body Acceleration Mean of Z direction                    
+tGravityAcc.mean.X              | Gravity Acceleration Mean of X direction                       
+tGravityAcc.mean.Y              | Gravity Acceleration Mean of Y direction                        
+tGravityAcc.mean.Z              | Gravity Acceleration Mean of Z direction                        
+tBodyAccJerk.mean.X             | Body Acceleration Jerk Mean of X direction
+tBodyAccJerk.mean.Y             | Body Acceleration Jerk Mean of Y direction    
+tBodyAccJerk.mean.Z             | Body Acceleration Jerk Mean of Z direction
+tBodyGyro.mean.X                | Body Gyro Mean of X direction   
+tBodyGyro.mean.Y                | Body Gyro Mean of Y direction      
+tBodyGyro.mean.Z                | Body Gyro Mean of Z direction      
+tBodyGyroJerk.mean.X            | Body Gyro Jerk Mean of X direction     
+tBodyGyroJerk.mean.Y            | Body Gyro Jerk Mean of Y direction     
+tBodyGyroJerk.mean.Z            | Body Gyro Jerk Mean of Z direction     
+tBodyAccMag.mean                | Body Acceleration Magnitude Mean    
+tGravityAccMag.mean             | Gravity Acceleration Magnitude Mean   
+tBodyAccJerkMag.mean            | Body Acceleration Jerk Magnitude Mean    
+tBodyGyroMag.mean               | Body Gyro Magnitude Mean  
+tBodyGyroJerkMag.mean           | Body Gyro Jerk Magnitude Mean
+fBodyAcc.mean.X                 | Body Acceleration Mean of X direction 
+fBodyAcc.mean.Y                 | Body Acceleration Mean of Y direction    
+fBodyAcc.mean.Z                 | Body Acceleration Mean of Z direction     
+fBodyAcc.meanFreq.X             | Body Acceleration Mean Frequency of X direction     
+fBodyAcc.meanFreq.Y             | Body Acceleration Mean Frequency of Y direction    
+fBodyAcc.meanFreq.Z             | Body Acceleration Mean Frequency of Z direction     
+fBodyAccJerk.mean.X             | Body Acceleration Jerk Mean of X direction     
+fBodyAccJerk.mean.Y             | Body Acceleration Jerk Mean of Y direction   
+fBodyAccJerk.mean.Z             | Body Acceleration Jerk Mean of Z direction    
+fBodyAccJerk.meanFreq.X         | Body Acceleration Jerk Mean Frequency of X direction     
+fBodyAccJerk.meanFreq.Y         | Body Acceleration Jerk Mean Frequency of Y direction    
+fBodyAccJerk.meanFreq.Z         | Body Acceleration Jerk Mean Frequency of Z direction     
+fBodyGyro.mean.X                | Body Gyro Mean of X direction
+fBodyGyro.mean.Y                | Body Gyro Mean of Y direction   
+fBodyGyro.mean.Z                | Body Gyro Mean of Z direction    
+fBodyGyro.meanFreq.X            | Body Gyro Mean Frequency of X direction    
+fBodyGyro.meanFreq.Y            | Body Gyro Mean Frequency of Y direction     
+fBodyGyro.meanFreq.Z            | Body Gyro Mean Frequency of Z direction     
+fBodyAccMag.mean                | Body Acceleration Magnitude Mean 
+fBodyAccMag.meanFreq            | Body Acceleration Magnitude   
+fBodyBodyAccJerkMag.mean        | Body Body Acceleration Jerk Magnitude Mean    
+fBodyBodyAccJerkMag.meanFreq    | Body Body Acceleration Jerk Magnitude Mean Frequency    
+fBodyBodyGyroMag.mean           | Body Body Gyro Magnitude Mean   
+fBodyBodyGyroMag.meanFreq       | Body Body Gyro Magnitude Mean Frequency    
+fBodyBodyGyroJerkMag.mean       | Body Body Gyro Jerk Magnitude Magnitude    
+fBodyBodyGyroJerkMag.meanFreq   | Body Body Gyro Jerk Magnitude Mean Frequency
+
+  
 ## Angle Variables are generalized 
 #Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
 
-angle.tBodyAccMean.gravity   
-angle.tBodyAccJerkMean.gravityMean  
-angle.tBodyGyroMean.gravityMean    
-angle.tBodyGyroJerkMean.gravityMean 
-angle.X.gravityMean
-angle.Y.gravityMean                
-angle.Z.gravityMean                 
-## End of Angled Veriables
+Name						    	  | Description
+--------------------------------------|--------------------
+angle.tBodyAccMean.gravity   		  | Angle Body Acceleration Mean of Gravity
+angle.tBodyAccJerkMean.gravityMean 	  | 
+angle.tBodyGyroMean.gravityMean       |
+angle.tBodyGyroJerkMean.gravityMean   |
+angle.X.gravityMean					  |
+angle.Y.gravityMean            		  |    
+angle.Z.gravityMean                   |
+--------------------------------------|---------------------------------------
+## End of Angled Veriables            |
 
-tBodyAcc.std.X                      
-tBodyAcc.std.Y                     
-tBodyAcc.std.Z
-tGravityAcc.std.X                   
-tGravityAcc.std.Y                  
-tGravityAcc.std.Z                   
-tBodyAccJerk.std.X                  
-tBodyAccJerk.std.Y                 
-tBodyAccJerk.std.Z                  
-tBodyGyro.std.X                     
-tBodyGyro.std.Y                    
-tBodyGyro.std.Z                     
-tBodyGyroJerk.std.X                 
-tBodyGyroJerk.std.Y                
-tBodyGyroJerk.std.Z                 
-tBodyAccMag.std                     
-tGravityAccMag.std                 
-tBodyAccJerkMag.std                 
-tBodyGyroMag.std                    
-tBodyGyroJerkMag.std               
-fBodyAcc.std.X                      
-fBodyAcc.std.Y                      
-fBodyAcc.std.Z                     
-fBodyAccJerk.std.X                  
-fBodyAccJerk.std.Y                  
-fBodyAccJerk.std.Z                 
-fBodyGyro.std.X                     
-fBodyGyro.std.Y                     
-fBodyGyro.std.Z                    
-fBodyAccMag.std                     
-fBodyBodyAccJerkMag.std             
-fBodyBodyGyroMag.std               
-fBodyBodyGyroJerkMag.std 
+
+Name						    | Description
+--------------------------------|--------------------
+tBodyAcc.std.X                  | Body Acceleration Standard Deviation of X    
+tBodyAcc.std.Y                  | Body Acceleration Standard Deviation of Y      
+tBodyAcc.std.Z					| Body Acceleration Standard Deviation of Z  
+tGravityAcc.std.X               | Gravity Acceleration Standard Deviation of X      
+tGravityAcc.std.Y               | Gravity Acceleration Standard Deviation of Y         
+tGravityAcc.std.Z               | Gravity Acceleration Standard Deviation of Z          
+tBodyAccJerk.std.X              | Body Acceleration Jerk Standard Deviation of X          
+tBodyAccJerk.std.Y              | Body Acceleration Jerk Standard Deviation of Y             
+tBodyAccJerk.std.Z              | Body Acceleration Jerk Standard Deviation of Z              
+tBodyGyro.std.X                 | Body Gyro Standard Deviation of X              
+tBodyGyro.std.Y                 | Body Gyro Standard Deviation of Y                 
+tBodyGyro.std.Z                 | Body Gyro Standard Deviation of Z                  
+tBodyGyroJerk.std.X             | Body Gyro Jerk Standard Deviation of X                  
+tBodyGyroJerk.std.Y             | Body Gyro Jerk Standard Deviation of Y                     
+tBodyGyroJerk.std.Z             | Body Gyro Jerk Standard Deviation of Z                      
+tBodyAccMag.std                 | Body Acceleration Standard Deviation
+tGravityAccMag.std              | Gravity Acceleration Magnitude Standard Deviation   
+tBodyAccJerkMag.std             | Body Acceleration Jerk Magnitude Standard Deviation   
+tBodyGyroMag.std                | Body Gyro Magnitude Standard Deviation    
+tBodyGyroJerkMag.std            | Body Gyro Jerk Magnitude Standard Deviation   
+fBodyAcc.std.X                  | Body Acceleration Standard Deviation of X    
+fBodyAcc.std.Y                  | Body Acceleration Standard Deviation of Y     
+fBodyAcc.std.Z                  | Body Acceleration Standard Deviation of Z   
+fBodyAccJerk.std.X              | Body Acceleration Jerk Standard Deviation of X    
+fBodyAccJerk.std.Y              | Body Acceleration Jerk Standard Deviation of Y    
+fBodyAccJerk.std.Z              | Body Acceleration Jerk Standard Deviation of Z   
+fBodyGyro.std.X                 | Body Gyro Standard Deviation of X   
+fBodyGyro.std.Y                 | Body Gyro Standard Deviation of Y    
+fBodyGyro.std.Z                 | Body Gyro Standard Deviation of Z   
+fBodyAccMag.std                 | Body Acceleration Magnitude Standard Deviation    
+fBodyBodyAccJerkMag.std         | Body Body Acceleration Jerk Magnitude Standard Deviation    
+fBodyBodyGyroMag.std            | Body Body Gyro Magnitude Standard Deviation   
+fBodyBodyGyroJerkMag.std        | Body Body Gyro Jerk Magnitude Standard Deviation
+--------------------------------|---------------------------------------
+## End of Veriables             |
 
 
