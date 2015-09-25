@@ -5,7 +5,7 @@ The contents of this repository are the requierd files for creating a the Tidy d
 
 Files                         | Description
 --------------------------------|------------------------------------------------------
-README.md:                      | This file
+README.md                      | This file
 UCI HAR Dataset.zip: Raw Data   | Raw unprocessed files (see CodeBook4GettingData_Project1.md for definition)
 combined UCI HAR Dataset.txt    | Tidy Dataset (see CodeBook4GettingData_Project1.md for definition)
 run_analysis.R                  | R script used to convert Raw Date into combined Dataset
