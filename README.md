@@ -9,7 +9,7 @@ README.md:                      | This file
 UCI HAR Dataset.zip: Raw Data   | Raw unprocessed files (see CodeBook4GettingData_Project1.md for definition)
 combined UCI HAR Dataset.txt    | Tidy Dataset (see CodeBook4GettingData_Project1.md for definition)
 run_analysis.R                  | R script used to convert Raw Date into combined Dataset
---------------------------------|------------------------------------------------------
+
 Steps to reproduce project.
 1.) download and expand UCI HAR Dataset.zip to UCI HAR Dataset directory underneath your working directory
 2.) download run_analysis.R to your working directory
