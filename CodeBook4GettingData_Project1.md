@@ -49,7 +49,7 @@ tBodyGyroJerkMean
 
 
 The initial dataset was processed using 'run_analysis.r'. The output from the R process is 'combined UCI HAR Dataset.txt'
-The dataset was left in a #WIDE format 
+The dataset was left in a WIDE format specifically. I don't believe that this violates the tidy rules
 ## Definition of 'combined UCI HAR Dataset.txt'
 
 ##Columns in code:
