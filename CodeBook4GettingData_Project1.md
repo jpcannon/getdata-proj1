@@ -120,14 +120,14 @@ fBodyBodyGyroJerkMag.meanFreq   | Body Body Gyro Jerk Magnitude Mean Frequency
 Name						    	  | Description
 --------------------------------------|--------------------
 angle.tBodyAccMean.gravity   		  | Angle Body Acceleration Mean of Gravity
-angle.tBodyAccJerkMean.gravityMean 	  | 
-angle.tBodyGyroMean.gravityMean       |
-angle.tBodyGyroJerkMean.gravityMean   |
-angle.X.gravityMean					  |
-angle.Y.gravityMean            		  |    
-angle.Z.gravityMean                   |
---------------------------------------|---------------------------------------
-## End of Angled Veriables            |
+angle.tBodyAccJerkMean.gravityMean 	  | Angle Body Acceleration Jerk Mean of Gravity
+angle.tBodyGyroMean.gravityMean       | Angle Body Gyro Mean of Mean of Gravity Mean
+angle.tBodyGyroJerkMean.gravityMean   |	Angle Body Gyro Jerk Mean of Gravity Mean
+angle.X.gravityMean					  | Angle Gravity of Mean in X direction
+angle.Y.gravityMean            		  | Angle Gravity of Mean in Y direction    
+angle.Z.gravityMean                   | Angle Gravity of Mean in Z direction
+
+## End of Angled Veriables            
 
 
 Name						    | Description
@@ -165,7 +165,7 @@ fBodyAccMag.std                 | Body Acceleration Magnitude Standard Deviation
 fBodyBodyAccJerkMag.std         | Body Body Acceleration Jerk Magnitude Standard Deviation    
 fBodyBodyGyroMag.std            | Body Body Gyro Magnitude Standard Deviation   
 fBodyBodyGyroJerkMag.std        | Body Body Gyro Jerk Magnitude Standard Deviation
---------------------------------|---------------------------------------
-## End of Veriables             |
+
+## End of Veriables             
 
 
