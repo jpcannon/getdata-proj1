@@ -52,11 +52,23 @@ tBodyGyroJerkMean
 The initial dataset was processed using 'run_analysis.r'. The output from the R process is 'combined UCI HAR Dataset.txt'
 The dataset was left in a WIDE format specifically. I don't believe that this violates the tidy rules
 
+1.) Read in the features that will serve as column names on the final set
 ```r
 Read the files
 # Read in Column names
 col_names <-read.table(file=".\\UCI HAR Dataset\\features.txt")
+```
+This will have the original names
+  V1                V2
+1  1 tBodyAcc-mean()-X
+2  2 tBodyAcc-mean()-Y
+3  3 tBodyAcc-mean()-Z
+4  4  tBodyAcc-std()-X
+5  5  tBodyAcc-std()-Y
+6  6  tBodyAcc-std()-Z
 
+2.) Clean up the feature names
+```
 # Clean them up
 col_names[,2] <- gsub("\\(\\)", " ", col_names[,2])
 col_names[,2] <- gsub("\\(", " ", col_names[,2])
@@ -67,6 +79,31 @@ col_names[,2] <- trimws(col_names[,2])
 col_names[,2] <- gsub(" ", ".", col_names[,2])
 col_names[,2] <- gsub("..", ".", col_names[,2], fixed = TRUE)
 ```
+This will produce R friendly column names
+  V1              V2
+1  1 tBodyAcc.mean.X
+2  2 tBodyAcc.mean.Y
+3  3 tBodyAcc.mean.Z
+4  4  tBodyAcc.std.X
+5  5  tBodyAcc.std.Y
+6  6  tBodyAcc.std.Z
+
+3.) Read in Activity names and codes s
+```
+# Read in the activity types
+activities <-read.table(file=".\\UCI HAR Dataset\\activity_labels.txt")
+colnames(activities) <- c("Activity_Code","Activity")
+```
+This will contain
+  Activity_Code           Activity
+1             1            WALKING
+2             2   WALKING_UPSTAIRS
+3             3 WALKING_DOWNSTAIRS
+4             4            SITTING
+5             5           STANDING
+6             6             LAYING
+
+
 
 
 ## Definition of 'combined UCI HAR Dataset.txt'
