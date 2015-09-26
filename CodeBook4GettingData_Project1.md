@@ -1,6 +1,7 @@
 #Code Book for Getting Data Project 1
 ##Information from original dataset. This has been abreviated to only include relevant information of the post processed data.
 
+##Original file definition
 Feature Selection 
 =================
 
@@ -47,9 +48,26 @@ tBodyAccJerkMean
 tBodyGyroMean
 tBodyGyroJerkMean
 
-
+##Processing the data
 The initial dataset was processed using 'run_analysis.r'. The output from the R process is 'combined UCI HAR Dataset.txt'
 The dataset was left in a WIDE format specifically. I don't believe that this violates the tidy rules
+
+```Read the files
+# Read in Column names
+col_names <-read.table(file=".\\UCI HAR Dataset\\features.txt")
+
+# Clean them up
+col_names[,2] <- gsub("\\(\\)", " ", col_names[,2])
+col_names[,2] <- gsub("\\(", " ", col_names[,2])
+col_names[,2] <- gsub("\\)", " ", col_names[,2])
+col_names[,2] <- gsub("\\,", " ", col_names[,2])
+col_names[,2] <- gsub("\\-", " ", col_names[,2])
+col_names[,2] <- trimws(col_names[,2])
+col_names[,2] <- gsub(" ", ".", col_names[,2])
+col_names[,2] <- gsub("..", ".", col_names[,2], fixed = TRUE)
+~~~~
+
+
 ## Definition of 'combined UCI HAR Dataset.txt'
 
 ##Columns in code:
