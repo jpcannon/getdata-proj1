@@ -105,11 +105,90 @@ This will contain
   5             5           STANDING
   6             6             LAYING
 ```
+4.) Read in the Test data and add Subject and Activity_Code columns
+```
+# Read in test data
+test_data <- read.table(file=".\\UCI HAR Dataset\\test\\X_test.txt")
+test_subject <-read.table(file=".\\UCI HAR Dataset\\test\\subject_test.txt")
+test_activity <-read.table(file=".\\UCI HAR Dataset\\test\\y_test.txt")
+
+# Add column names
+colnames(test_data) <-col_names[,2]
+colnames(test_subject) <- c("Subject")
+colnames(test_activity) <- c("Activity_Code")
+```
+5.) Combine the Subject, Activity ,and Data datasets
+```
+# combine the files
+test_data <-cbind(test_subject,test_activity,test_data)
+```
+The first 5 cols of the result should look like this
+```
+  Subject Activity_Code tBodyAcc.mean.X tBodyAcc.mean.Y tBodyAcc.mean.Z
+1       2             5       0.2571778     -0.02328523     -0.01465376
+2       2             5       0.2860267     -0.01316336     -0.11908252
+3       2             5       0.2754848     -0.02605042     -0.11815167
+4       2             5       0.2702982     -0.03261387     -0.11752018
+5       2             5       0.2748330     -0.02784779     -0.12952716
+6       2             5       0.2792199     -0.01862040     -0.11390197
+```
+
+6.) Do Set 4 & 5 with Training datasets 
+```
+# Read in training data
+train_data <- read.table(file=".\\UCI HAR Dataset\\train\\x_train.txt")
+train_subject <-read.table(file=".\\UCI HAR Dataset\\train\\subject_train.txt")
+train_activity <-read.table(file=".\\UCI HAR Dataset\\train\\y_train.txt")
+
+# Add column names
+colnames(train_data) <-col_names[,2]
+colnames(train_subject) <- c("Subject")
+colnames(train_activity) <- c("Activity_Code")
+
+# combine files
+train_data <-cbind(train_subject,train_activity,train_data)
+```
+7.) Combine Test and Training datasets
+```
+# Put Test and Training datasets together
+full_data <- rbind(test_data,train_data)
+```
+At this point you should have 10299 rows and 563 columns
+
+8.) Remove duplicates created from cleaning column names. These columns are not needed in the final dataset
+```
+# remove duplicate columns
+full_data <- full_data[ , !duplicated(colnames(full_data))]
+```
+9.) Select the columns that are either Mean or Std features
+```
+#select only the columns that we want
+mean_data <- select(full_data,contains("Subject",ignore.case=TRUE),
+                    contains("Activity",ignore.case=TRUE),
+                    contains("mean",ignore.case=TRUE),
+                    contains("std",ignore.case=TRUE))
+```                    
+Now you should be down to 88 columns
+
+10.) Add Activity Name, reorder results without Activity_Code
+
+```
+# Replace Activity code with Activity name
+for(i in 1:nrow(mean_data)) {
+  mean_data[i,"Activity"] <- activities[mean_data[i,]$Activity_Code,"Activity"]
+}
+
+# Loose Activity_code and move Activity to 2nd column
+select_data <- select(mean_data,1,Activity,4:ncol(mean_data)-1)
+```
+Now the first 5 columns of your dataset should look like
+```
+```
+
 
 ## Definition of 'combined UCI HAR Dataset.txt'
 
-##Columns in code:
-
+###Columns in code:
 Subject:            The numeric representation of the subject being measured                            
 Activity:           The activity occuring during measurment
 ##Measurment names include measurment type:
