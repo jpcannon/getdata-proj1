@@ -72,9 +72,8 @@ mean_data <- select(full_data,contains("Subject",ignore.case=TRUE),
                     contains("std",ignore.case=TRUE))
 
 # Replace Activity code with Activity name
-for(i in 1:nrow(mean_data)) {
-  mean_data[i,"Activity"] <- activities[mean_data[i,]$Activity_Code,"Activity"]
-}
+mean_data[,"Activity"] <- activities[mean_data$Activity_Code,"Activity"]
+
 
 # Loose Activity_code and move Activity to 2nd column
 select_data <- select(mean_data,1,Activity,4:ncol(mean_data)-1)
