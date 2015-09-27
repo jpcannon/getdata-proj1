@@ -210,8 +210,10 @@ write.table(final,file="combined UCI HAR Dataset.txt",row.names = FALSE)
 ## Definition of 'combined UCI HAR Dataset.txt'
 
 ###Columns in code:
-Subject:            The numeric representation of the subject being measured                            
-Activity:           The activity occuring during measurment
+Name| Description
+-----|-------
+Subject| The numeric representation of the subject being measured                            
+Activity| The activity occuring during measurment
 ##Measurment names include measurment type:
 mean,std,meanFreq,gravityMean,gravity (NOTE: gravity in and of itself is neither a std or mean measurement, however in our
 case it is attached to a tBodyAccMean measurement so I included it.
