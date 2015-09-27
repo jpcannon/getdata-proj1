@@ -168,7 +168,7 @@ mean_data <- select(full_data,contains("Subject",ignore.case=TRUE),
                     contains("mean",ignore.case=TRUE),
                     contains("std",ignore.case=TRUE))
 ```                    
-Now you should be down to 88 columns
+Now you should be down to 89 columns
 
 10.) Add Activity Name, reorder results without Activity_Code
 
@@ -183,8 +183,28 @@ select_data <- select(mean_data,1,Activity,4:ncol(mean_data)-1)
 ```
 Now the first 5 columns of your dataset should look like
 ```
+   Subject Activity tBodyAcc.mean.X tBodyAcc.mean.Y tBodyAcc.mean.Z
+30       2 STANDING       0.2883747    -0.008547660     -0.10705876
+31       2 STANDING       0.2859050    -0.007744730     -0.10273652
+32       2  SITTING       0.2964871    -0.014684879     -0.13980848
+33       2  SITTING       0.2772354    -0.025677001     -0.11843072
+34       2  SITTING       0.2782907    -0.014536086     -0.10524253
+35       2  SITTING       0.2781599    -0.007667826     -0.09927102
 ```
+###Note: I printed rows 30-35 so that you can see some different Activities
 
+11.) Reduce data to the Average of Subject by Activity 
+```
+# Average all the data for a given Subject and Activity
+final <- select_data %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
+```
+At this point you should have 88 columns and 180 rows
+
+12.) Final step is write out dataset named "combined UCI HAR Dataset.txt"
+```
+# Write out file
+write.table(final,file="combined UCI HAR Dataset.txt",row.names = FALSE)
+```
 
 ## Definition of 'combined UCI HAR Dataset.txt'
 
