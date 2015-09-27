@@ -51,6 +51,7 @@ tBodyGyroJerkMean
 ##Processing the data
 The initial dataset was processed using 'run_analysis.r'. The output from the R process is 'combined UCI HAR Dataset.txt'
 The dataset was left in a WIDE format specifically. I don't believe that this violates the tidy rules
+#####Note: I use different variables for each step. This was to allow checking of the changes made on each step. You may want to use reuse variables on some of these steps to reduce memory footprint.
 
 1.) Read in the features that will serve as column names on the final set
 ```r
