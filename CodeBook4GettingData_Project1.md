@@ -269,8 +269,8 @@ fBodyBodyGyroJerkMag.mean       | Body Body Gyro Jerk Magnitude Magnitude
 fBodyBodyGyroJerkMag.meanFreq   | Body Body Gyro Jerk Magnitude Mean Frequency
 
   
-## Angle Variables are generalized 
-#Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+####Additional vectors were obtained by averaging the signals in a signal window sample. 
+####These are used on the angle() variable. Angle Variables are generalized
 
 Name						    	  | Description
 --------------------------------------|--------------------
@@ -282,7 +282,7 @@ angle.X.gravityMean					  | Angle Gravity of Mean in X direction
 angle.Y.gravityMean            		  | Angle Gravity of Mean in Y direction    
 angle.Z.gravityMean                   | Angle Gravity of Mean in Z direction
 
-## End of Angled Veriables            
+#### End of Angled Veriables            
 
 
 Name						    | Description
@@ -321,6 +321,6 @@ fBodyBodyAccJerkMag.std         | Body Body Acceleration Jerk Magnitude Standard
 fBodyBodyGyroMag.std            | Body Body Gyro Magnitude Standard Deviation   
 fBodyBodyGyroJerkMag.std        | Body Body Gyro Jerk Magnitude Standard Deviation
 
-## End of Veriables             
+#### End of Variables             
 
 
