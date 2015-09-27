@@ -283,7 +283,7 @@ angle.X.gravityMean					  | Angle Gravity of Mean in X direction
 angle.Y.gravityMean            		  | Angle Gravity of Mean in Y direction    
 angle.Z.gravityMean                   | Angle Gravity of Mean in Z direction
 
-#### End of Angled Veriables            
+#### End of Angled Variables            
 
 
 Name						    | Description
