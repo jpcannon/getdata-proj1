@@ -1,6 +1,7 @@
 #Code Book for Getting Data Project 1
 ##Information from original dataset. This has been abreviated to only include relevant information of the post processed data.
 
+##Original file definition
 Feature Selection 
 =================
 
@@ -47,13 +48,168 @@ tBodyAccJerkMean
 tBodyGyroMean
 tBodyGyroJerkMean
 
-
+##Processing the data
 The initial dataset was processed using 'run_analysis.r'. The output from the R process is 'combined UCI HAR Dataset.txt'
 The dataset was left in a WIDE format specifically. I don't believe that this violates the tidy rules
+#####Note: I use different variables for each step. This was to allow checking of the changes made on each step. You may want to use reuse variables on some of these steps to reduce memory footprint.
+
+1.) Read in the features that will serve as column names on the final set
+```r
+Read the files
+# Read in Column names
+col_names <-read.table(file=".\\UCI HAR Dataset\\features.txt")
+```
+This will have the original names
+  V1                V2
+1  1 tBodyAcc-mean()-X
+2  2 tBodyAcc-mean()-Y
+3  3 tBodyAcc-mean()-Z
+4  4  tBodyAcc-std()-X
+5  5  tBodyAcc-std()-Y
+6  6  tBodyAcc-std()-Z
+
+2.) Clean up the feature names
+```
+# Clean them up
+col_names[,2] <- gsub("\\(\\)", " ", col_names[,2])
+col_names[,2] <- gsub("\\(", " ", col_names[,2])
+col_names[,2] <- gsub("\\)", " ", col_names[,2])
+col_names[,2] <- gsub("\\,", " ", col_names[,2])
+col_names[,2] <- gsub("\\-", " ", col_names[,2])
+col_names[,2] <- trimws(col_names[,2])
+col_names[,2] <- gsub(" ", ".", col_names[,2])
+col_names[,2] <- gsub("..", ".", col_names[,2], fixed = TRUE)
+```
+This will produce R friendly column names
+```
+V1              V2
+1  1 tBodyAcc.mean.X
+2  2 tBodyAcc.mean.Y
+3  3 tBodyAcc.mean.Z
+4  4  tBodyAcc.std.X
+5  5  tBodyAcc.std.Y
+6  6  tBodyAcc.std.Z
+```
+3.) Read in Activity names and codes s
+```
+# Read in the activity types
+activities <-read.table(file=".\\UCI HAR Dataset\\activity_labels.txt")
+colnames(activities) <- c("Activity_Code","Activity")
+```
+This will contain
+```
+  Activity_Code           Activity
+  1             1            WALKING
+  2             2   WALKING_UPSTAIRS
+  3             3 WALKING_DOWNSTAIRS
+  4             4            SITTING
+  5             5           STANDING
+  6             6             LAYING
+```
+4.) Read in the Test data and add Subject and Activity_Code columns
+```
+# Read in test data
+test_data <- read.table(file=".\\UCI HAR Dataset\\test\\X_test.txt")
+test_subject <-read.table(file=".\\UCI HAR Dataset\\test\\subject_test.txt")
+test_activity <-read.table(file=".\\UCI HAR Dataset\\test\\y_test.txt")
+
+# Add column names
+colnames(test_data) <-col_names[,2]
+colnames(test_subject) <- c("Subject")
+colnames(test_activity) <- c("Activity_Code")
+```
+5.) Combine the Subject, Activity ,and Data datasets
+```
+# combine the files
+test_data <-cbind(test_subject,test_activity,test_data)
+```
+The first 5 cols of the result should look like this
+```
+  Subject Activity_Code tBodyAcc.mean.X tBodyAcc.mean.Y tBodyAcc.mean.Z
+1       2             5       0.2571778     -0.02328523     -0.01465376
+2       2             5       0.2860267     -0.01316336     -0.11908252
+3       2             5       0.2754848     -0.02605042     -0.11815167
+4       2             5       0.2702982     -0.03261387     -0.11752018
+5       2             5       0.2748330     -0.02784779     -0.12952716
+6       2             5       0.2792199     -0.01862040     -0.11390197
+```
+
+6.) Do Set 4 & 5 with Training datasets 
+```
+# Read in training data
+train_data <- read.table(file=".\\UCI HAR Dataset\\train\\x_train.txt")
+train_subject <-read.table(file=".\\UCI HAR Dataset\\train\\subject_train.txt")
+train_activity <-read.table(file=".\\UCI HAR Dataset\\train\\y_train.txt")
+
+# Add column names
+colnames(train_data) <-col_names[,2]
+colnames(train_subject) <- c("Subject")
+colnames(train_activity) <- c("Activity_Code")
+
+# combine files
+train_data <-cbind(train_subject,train_activity,train_data)
+```
+7.) Combine Test and Training datasets
+```
+# Put Test and Training datasets together
+full_data <- rbind(test_data,train_data)
+```
+At this point you should have 10299 rows and 563 columns
+
+8.) Remove duplicates created from cleaning column names. These columns are not needed in the final dataset
+```
+# remove duplicate columns
+full_data <- full_data[ , !duplicated(colnames(full_data))]
+```
+9.) Select the columns that are either Mean or Std features
+```
+#select only the columns that we want
+mean_data <- select(full_data,contains("Subject",ignore.case=TRUE),
+                    contains("Activity",ignore.case=TRUE),
+                    contains("mean",ignore.case=TRUE),
+                    contains("std",ignore.case=TRUE))
+```                    
+Now you should be down to 89 columns
+
+10.) Add Activity Name, reorder results without Activity_Code
+
+```
+# Replace Activity code with Activity name
+for(i in 1:nrow(mean_data)) {
+  mean_data[i,"Activity"] <- activities[mean_data[i,]$Activity_Code,"Activity"]
+}
+
+# Loose Activity_code and move Activity to 2nd column
+select_data <- select(mean_data,1,Activity,4:ncol(mean_data)-1)
+```
+Now the first 5 columns of your dataset should look like
+```
+   Subject Activity tBodyAcc.mean.X tBodyAcc.mean.Y tBodyAcc.mean.Z
+30       2 STANDING       0.2883747    -0.008547660     -0.10705876
+31       2 STANDING       0.2859050    -0.007744730     -0.10273652
+32       2  SITTING       0.2964871    -0.014684879     -0.13980848
+33       2  SITTING       0.2772354    -0.025677001     -0.11843072
+34       2  SITTING       0.2782907    -0.014536086     -0.10524253
+35       2  SITTING       0.2781599    -0.007667826     -0.09927102
+```
+#####Note: I printed rows 30-35 so that you can see some different Activities
+
+11.) Reduce data to the Average of Subject by Activity 
+```
+# Average all the data for a given Subject and Activity
+final <- select_data %>% group_by(Subject,Activity) %>% summarise_each(funs(mean))
+```
+At this point you should have 88 columns and 180 rows
+
+12.) Final step is write out dataset named "combined UCI HAR Dataset.txt"
+```
+# Write out file
+write.table(final,file="combined UCI HAR Dataset.txt",row.names = FALSE)
+```
+
 ## Definition of 'combined UCI HAR Dataset.txt'
 
-##Columns in code:
-
+###Columns in code:
 Subject:            The numeric representation of the subject being measured                            
 Activity:           The activity occuring during measurment
 ##Measurment names include measurment type:
@@ -114,8 +270,8 @@ fBodyBodyGyroJerkMag.mean       | Body Body Gyro Jerk Magnitude Magnitude
 fBodyBodyGyroJerkMag.meanFreq   | Body Body Gyro Jerk Magnitude Mean Frequency
 
   
-## Angle Variables are generalized 
-#Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
+####Additional vectors were obtained by averaging the signals in a signal window sample. 
+####These are used on the angle() variable. Angle Variables are generalized
 
 Name						    	  | Description
 --------------------------------------|--------------------
@@ -127,7 +283,7 @@ angle.X.gravityMean					  | Angle Gravity of Mean in X direction
 angle.Y.gravityMean            		  | Angle Gravity of Mean in Y direction    
 angle.Z.gravityMean                   | Angle Gravity of Mean in Z direction
 
-## End of Angled Veriables            
+#### End of Angled Veriables            
 
 
 Name						    | Description
@@ -166,6 +322,6 @@ fBodyBodyAccJerkMag.std         | Body Body Acceleration Jerk Magnitude Standard
 fBodyBodyGyroMag.std            | Body Body Gyro Magnitude Standard Deviation   
 fBodyBodyGyroJerkMag.std        | Body Body Gyro Jerk Magnitude Standard Deviation
 
-## End of Veriables             
+#### End of Variables             
 
 
