@@ -191,7 +191,7 @@ Now the first 5 columns of your dataset should look like
 34       2  SITTING       0.2782907    -0.014536086     -0.10524253
 35       2  SITTING       0.2781599    -0.007667826     -0.09927102
 ```
-###Note: I printed rows 30-35 so that you can see some different Activities
+#####Note: I printed rows 30-35 so that you can see some different Activities
 
 11.) Reduce data to the Average of Subject by Activity 
 ```
