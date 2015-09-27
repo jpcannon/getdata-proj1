@@ -7,9 +7,9 @@ Files                         | Description
 --------------------------------|------------------------------------------------------
 README.md                      | This file
 [CodeBook4GettingData_Project1.md](https://github.com/jpcannon/getdata-proj1/blob/master/CodeBook4GettingData_Project1.md)| Codebook for this project
-UCI HAR Dataset.zip: Raw Data   | Raw unprocessed files (see CodeBook4GettingData_Project1.md for definition)
-combined UCI HAR Dataset.txt    | Tidy Dataset (see CodeBook4GettingData_Project1.md for definition)
-run_analysis.R                  | R script used to convert Raw Date into combined Dataset
+[UCI HAR Dataset.zip](https://github.com/jpcannon/getdata-proj1/blob/master/UCI%20HAR%20Dataset.zip) | Raw unprocessed files (see CodeBook4GettingData_Project1.md for definition)
+[combined UCI HAR Dataset.txt](https://github.com/jpcannon/getdata-proj1/blob/master/combined%20UCI%20HAR%20Dataset.txt)| Tidy Dataset (see CodeBook4GettingData_Project1.md for definition)
+[run_analysis.R](https://github.com/jpcannon/getdata-proj1/blob/master/run_analysis.R)| R script used to convert Raw Date into combined Dataset
 
 Step| Activity
 ----|-------------
