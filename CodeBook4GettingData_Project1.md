@@ -90,7 +90,7 @@ V1              V2
 5  5  tBodyAcc.std.Y
 6  6  tBodyAcc.std.Z
 ```
-3.) Read in Activity names and codes s
+3.) Read in Activity names and codes
 ```
 # Read in the activity types
 activities <-read.table(file=".\\UCI HAR Dataset\\activity_labels.txt")
