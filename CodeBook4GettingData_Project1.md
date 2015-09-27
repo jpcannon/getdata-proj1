@@ -13,42 +13,41 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 
 These signals were used to estimate variables of the feature vector for each pattern:  
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
-Feature |
-------------|--
-tBodyAcc-XYZ|
-tGravityAcc-XYZ|
-tBodyAccJerk-XYZ|
-tBodyGyro-XYZ|
-tBodyGyroJerk-XYZ|
-tBodyAccMag|
-tGravityAccMag|
-tBodyAccJerkMag|
-tBodyGyroMag|
-tBodyGyroJerkMag|
-fBodyAcc-XYZ|
-fBodyAccJerk-XYZ|
-fBodyGyro-XYZ|
-fBodyAccMag|
-fBodyAccJerkMag|
-fBodyGyroMag|
-fBodyGyroJerkMag|
-
+```
+tBodyAcc-XYZ
+tGravityAcc-XYZ
+tBodyAccJerk-XYZ
+tBodyGyro-XYZ
+tBodyGyroJerk-XYZ
+tBodyAccMag
+tGravityAccMag
+tBodyAccJerkMag
+tBodyGyroMag
+tBodyGyroJerkMag
+fBodyAcc-XYZ
+fBodyAccJerk-XYZ
+fBodyGyro-XYZ
+fBodyAccMag
+fBodyAccJerkMag
+fBodyGyroMag
+fBodyGyroJerkMag
+```
 The set of variables that were estimated from these signals are: 
-
+```
 mean(): Mean value
 std(): Standard deviation
 mad(): Median absolute deviation onent with largest magnitude
 meanFreq(): Weighted average of the frequency components to obtain a mean frequency
 angle(): Angle between to vectors.
-
+```
 Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
-
+```
 gravityMean
 tBodyAccMean
 tBodyAccJerkMean
 tBodyGyroMean
 tBodyGyroJerkMean
-
+```
 ##Processing the data
 The initial dataset was processed using 'run_analysis.r'. The output from the R process is 'combined UCI HAR Dataset.txt'
 The dataset was left in a WIDE format specifically. I don't believe that this violates the tidy rules
