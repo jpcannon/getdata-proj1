@@ -209,6 +209,7 @@ At this point you should have 88 columns and 180 rows
 # Write out file
 write.table(final,file="combined UCI HAR Dataset.txt",row.names = FALSE)
 ```
+#####Resulting dataset contains 180 obs. of  88 variables:
 
 ## Definition of 'combined UCI HAR Dataset.txt'
 
@@ -383,35 +384,38 @@ ft<- spread(tt,Feature,value)
 ```
 write.table(ft,file="combined UCI HAR Dataset Narrow.txt",row.names = FALSE)
 ```
-### Remember I just did the Make Narrow as a learning experiment. I don't have a strong enough
-### understanding of the data (esspecially angle vars), 
-### to be sure of my breakouts. Also, it is not fully tested
+### Narrow Dataset 
+Contains 3060 obs. of  26 variables
+
+###Columns in code:
 Name| Description
-----|-----------
+-----|-------
+Subject| The numeric representation of the subject being measured                            
+Activity| The activity occuring during measurment. e.g Walking, sitting, etc..
 Measure| What is calculated e.g. mean,std, etc...
 Direction| What direction is measured e.g. X, Y, Z, angle
 angle| Angle as a measurment
-fBodyAcc| Body 
-fBodyAccJerk|
-fBodyAccMag|
-fBodyBodyAccJerkMag|
-fBodyBodyGyroJerkMag
-fBodyBodyGyroMag|
-fBodyGyro|
-tBodyAcc|
-tBodyAccJerk
-tBodyAccJerkMag|
-tBodyAccJerkMean|
-tBodyAccMag|
-tBodyAccMean|       
-tBodyGyro|
-tBodyGyroJerk|       
-tBodyGyroJerkMag|
-tBodyGyroJerkMean|
-tBodyGyroMag|
-tBodyGyroMean|
-tGravityAcc|
-tGravityAccMag| 
+fBodyAcc| Body Acceleration
+fBodyAccJerk| Body Acceleration Jerk
+fBodyAccMag| Body Acceleration Magnitude
+fBodyBodyAccJerkMag| Body Body Acceleration Jerk Magnitude
+fBodyBodyGyroJerkMag| Body Body Gyro Jerk Magnitude
+fBodyBodyGyroMag| Body Body Gyro Magnitude
+fBodyGyro| Body Gyro
+tBodyAccMean| Body Acceleration Mean
+tBodyGyro| Body Gyro
+tBodyGyroJerk| Body Gyro Jerk 
+tBodyGyroJerkMag| Body Gyro Jerk Magnitude
+tBodyGyroJerkMean| Body Gyro Jerk Mean
+tBodyGyroMag| Body Gyro Magnitude
+tBodyGyroMean| Body Gyro Mean
+tGravityAcc| Gravity Acceleration
+tGravityAccMag| Gravity Acceleration Magnitude
+
+
+### Remember I just did the Make Narrow as a learning experiment. I don't have a strong enough
+### understanding of the data (esspecially angle vars), 
+### to be sure of my breakouts. Also, it is not fully tested
 
 
 
