@@ -327,6 +327,66 @@ fBodyBodyAccJerkMag.std         | Body Body Acceleration Jerk Magnitude Standard
 fBodyBodyGyroMag.std            | Body Body Gyro Magnitude Standard Deviation   
 fBodyBodyGyroJerkMag.std        | Body Body Gyro Jerk Magnitude Standard Deviation
 
-#### End of Variables             
+#### End of Variables            
+
+### Having more fun
+As stated at the beginning of the document the resulting dataset was left in a wide format.
+For learning purposes I took a crack at narrowing the dataset. This can be accomplished by
+running run_analysis_makenarrow.R as described below
+
+1.) Read in dataset created for the assingment by run_analysis.R
+```
+widetab <- read.table(file="combined UCI HAR Dataset.txt",header=TRUE )
+```
+2.) Break up the dataset into the 3 observed groups
+ Angle directed variables. Direction.Feature.Measure  e.g. angle.tBodyAccJerkMean.gravityMean
+ Directed Angle variables. Feature.Direction.Measure  e.g. angle.X.gravityMean
+ Standard Feature.Measure.Direction e.g. tBodyAcc.mean.X 
+
+
+```
+anglevars <- select(widetab, Subject,Activity, contains('angle'), 
+                    -(contains('angle.X')),
+                    -(contains('angle.Y')),
+                    -(contains('angle.Z')))
+angleDvars <- select(widetab, Subject,Activity,  
+                     contains('angle.X'),
+                     contains('angle.Y'),
+                     contains('angle.Z'))
+mainvars <-select(widetab, -(contains('angle')))
+```
+3.) Process each of the groups
+```
+tv<-mainvars %>%
+  gather(key, value, -Subject, -Activity) %>%
+  separate(key, into = c("Feature", "Measure","Direction"),fill="right", sep = "\\.") 
+
+tq<-anglevars %>%
+  gather(key, value, -Subject, -Activity) %>%
+  separate(key, into = c("Direction","Feature", "Measure"), sep = "\\.")%>%
+  select(Subject,Activity,Feature,Measure,Direction,value)
+
+td<-angleDvars %>%
+  gather(key, value, -Subject, -Activity) %>%
+  separate(key, into = c("Feature", "Direction","Measure"), sep = "\\.") %>%
+  select(Subject,Activity,Feature,Measure,Direction,value)
+```
+4.) put the processed groups together
+```
+tt<-rbind(tv,tq,td)
+```
+5.) Spread out the Feature column
+```
+ft<- spread(tt,Feature,value)
+```
+6.) Write out new table
+```
+write.table(ft,file="combined UCI HAR Dataset Narrow.txt",row.names = FALSE)
+```
+### Remember I just did the Make Narrow as a learning experiment. I don't have a strong enough
+### understanding of the data (esspecially angle vars), to be sure of my breakouts. Also, it is not fully tested
+
+```
+
 
 
