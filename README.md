@@ -19,3 +19,8 @@ Step| Activity
 4.) | combined UCI HAR Dataset.txt will be created in your working directory. It should match combined UCI HAR Dataset.txt
 
 
+###Extra Learning
+Files                         | Description
+--------------------------------|------------------------------------------------------
+[run_analysis_makenarrow.R](https://github.com/jpcannon/getdata-proj1/blob/master/run_analysis_makenarrow.R)| R script to make output from assignment Narrow
+[combined UCI HAR Dataset Narrow.txt](https://github.com/jpcannon/getdata-proj1/blob/master/combined%20UCI%20HAR%20Dataset%20Narrow.txt)| Output from run_analysis_makenarrow.R
