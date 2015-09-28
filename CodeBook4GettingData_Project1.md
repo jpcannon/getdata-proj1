@@ -384,9 +384,34 @@ ft<- spread(tt,Feature,value)
 write.table(ft,file="combined UCI HAR Dataset Narrow.txt",row.names = FALSE)
 ```
 ### Remember I just did the Make Narrow as a learning experiment. I don't have a strong enough
-### understanding of the data (esspecially angle vars), to be sure of my breakouts. Also, it is not fully tested
-
-```
+### understanding of the data (esspecially angle vars), 
+### to be sure of my breakouts. Also, it is not fully tested
+Name| Description
+----|-----------
+Measure| What is calculated e.g. mean,std, etc...
+Direction| What direction is measured e.g. X, Y, Z, angle
+angle| Angle as a measurment
+fBodyAcc| Body 
+fBodyAccJerk|
+fBodyAccMag|
+fBodyBodyAccJerkMag|
+fBodyBodyGyroJerkMag
+fBodyBodyGyroMag|
+fBodyGyro|
+tBodyAcc|
+tBodyAccJerk
+tBodyAccJerkMag|
+tBodyAccJerkMean|
+tBodyAccMag|
+tBodyAccMean|       
+tBodyGyro|
+tBodyGyroJerk|       
+tBodyGyroJerkMag|
+tBodyGyroJerkMean|
+tBodyGyroMag|
+tBodyGyroMean|
+tGravityAcc|
+tGravityAccMag| 
 
 
 
